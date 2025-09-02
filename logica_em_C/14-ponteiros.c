@@ -9,7 +9,7 @@ int main() {
     // ptr = variavel
 
     int var = 15;
-    int *ptr;
+    int *ptr; // o "*" serve para indicar que a variável é um ponteiro
 
     ptr = &var; // O "&" está atribuindo o endereço da variável como o conteúdo do ponteiro
 
