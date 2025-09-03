@@ -5,7 +5,7 @@ int main() {
     int categoria;
 
     // Entrada de dados
-    printf("EScreva a idade do nadador: ");
+    printf("Escreva a idade do nadador: ");
     scanf("%d", &idade);
 
     if (idade >= 5 && idade <= 7) {
@@ -27,4 +27,6 @@ int main() {
         case 4: printf("Juvenil B \n"); break;
         case 5: printf("Sênior \n"); break;
     }
+    
+    return 0;
 }

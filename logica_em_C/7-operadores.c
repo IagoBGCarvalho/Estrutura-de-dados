@@ -7,4 +7,5 @@ int main() {
     printf("%d\n", A * 2); /*Multiplicação*/
     printf("%d\n", A / 2); /*Divisão*/
     printf("%d\n", A % 2); /*Módulo*/
+    return 0;
 }

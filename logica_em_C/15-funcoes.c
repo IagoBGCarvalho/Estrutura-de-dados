@@ -14,4 +14,5 @@ int main() {
     scanf("%d %d", &num1, &num2);
     int soma_numeros = soma(num1, num2);
     printf("%d\n", soma_numeros);
+    return 0;
 }
