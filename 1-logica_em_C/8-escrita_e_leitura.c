@@ -6,7 +6,7 @@
 /*%c = caractere*/
 /*%d = inteiro*/
 /*%f = float*/
-/*%s = string*/
+/*%s = string(precisa importar a biblioteca (string.h)*/
 
 
 int main() {

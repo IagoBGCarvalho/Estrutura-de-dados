@@ -6,7 +6,7 @@ struct aluno { // Está definindo um tipo de dado (como no coq)
     char mencao[3];
 };
 
-typedef struct aluno aluno;
+typedef struct aluno aluno; // Cria uma instância de aluno como uma variável, eliminando a necessidade de declarar "struct aluno".
 
 int main() {
     aluno iago = {251039406, "Iago", "SS"};

@@ -13,6 +13,8 @@ int main() {
 
     ptr = &var; // O "&" está atribuindo o endereço da variável como o conteúdo do ponteiro
 
+    // No momento em que o ponteiro aponta para o endereço de memória da variável, ele tem o poder de alterar o valor da variável. Sintaxe: *p = novo_valor
+
     printf("\n");
 
     printf("Conteúdo da var = %d\n", var);
