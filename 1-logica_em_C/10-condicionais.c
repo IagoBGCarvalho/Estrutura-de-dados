@@ -18,7 +18,7 @@ int main() {
         case 3: printf("É o número 3!!\n"); break;
         case 4: printf("É o número 4!!\n"); break;
         case 5: printf("É o número 5!!\n"); break;
-        default: printf("Não é nenhum número de 1 a 5!");
+        default: printf("Não é nenhum número de 1 a 5!"); break;
     }
 
     return 0;

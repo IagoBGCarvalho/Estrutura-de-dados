@@ -1,11 +1,12 @@
 #include <stdio.h>
 
 void esvaziarVaso(int flores) {
-    if (flores > 0) { // Caso base - condição de parada
-        printf("%d\n", flores);
-        esvaziarVaso(flores - 1); // Chamando a si mesma e alterando o seu estado
+    if (flores <= 0) { // Caso base - condição de parada
+        return;
     }
 
+    printf("%d\n", flores);
+    esvaziarVaso(flores - 1); // Chamando a si mesma e alterando o seu estado
 }
 
 int main() {
@@ -15,7 +16,7 @@ int main() {
     // um algoritmo recursivo que modifica o seu estado em direção ao caso base e, 
     // por fim, deve chamar a si mesma
 
-    int flores = 2;
+    int flores = 10;
 
     esvaziarVaso(flores);
     return 0;
