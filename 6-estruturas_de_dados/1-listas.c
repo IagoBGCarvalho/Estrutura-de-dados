@@ -63,14 +63,51 @@ int main() {
         return l;
     }
 
-    void insere(Lista* l, int v) {
-        Lista* novo = (ListaNo*) malloc(sizeof(ListaNo));
+    void insere(Lista* l, int v) { // (lista, valor)
+        // Este algoritmo insere novos elementos no COMEÇO da lista (lista não possuem regras de inserção)
+        ListaNo* novo = (ListaNo*) malloc(sizeof(ListaNo));
 
-        novo->item = v;
-        novo->prox = l->prim;
+        novo->item = v; // Insere o valor v no item
+        novo->prox = l->prim; // Como o próximo nó ainda não existe, o ponteiro recebe o valor de prim (NULL)
 
-        l->prim = novo;
+        l->prim = novo; // Aponta o ponteiro inicial para o endereço do novo nó
     }
+
+    void imprime(Lista* l) {
+        for (ListaNo* p=1->prim; p!= NULL; p = p->prox) {
+            // p começa do primeiro elemento da lista, printa enquanto p for diferente de NULL e, a cada loop, recebe o endereço do próximo item
+            printf("Item = %d\n", p->item);
+        }
+    }
+
+    int percorre(LIsta* l, int v) {
+        for(ListaNo* p=1->prim; p != NULL; p = p->prox) {
+            if (p->item == v) {
+                return 1; // Encontrou!
+            }
+        }
+        return 0; // Não achou...
+    }
+
+    void remove(Lista* l, int v) {
+        ListaNo* ant = NULL; // ponteiro para elemento anterior
+        ListaNo* p = l->prim; // ponteiro para percorrer a lista 
+        // procura elemento na lista guardando anterior 
+        while (p != NULL && p->item != v) {
+        ant = p;
+        p = p->prox;
+        }
+        if (p != NULL) { // verifica se achou elemento 
+        if (ant == NULL) { // retira elemento do início 
+        l->prim = p->prox;
+        }else { // retira elemento do meio da lista 
+        ant->prox = p->prox;
+        }
+        free(p); // libera elemento ( nó )
+        }
+    }
+
+
 
     return 0;
 }
