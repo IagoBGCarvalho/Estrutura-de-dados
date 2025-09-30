@@ -91,23 +91,109 @@ int main() {
 
     void remove(Lista* l, int v) {
         ListaNo* ant = NULL; // ponteiro para elemento anterior
-        ListaNo* p = l->prim; // ponteiro para percorrer a lista 
+        ListaNo* p = l->prim; // ponteiro para percorrer a lista
+        
         // procura elemento na lista guardando anterior 
         while (p != NULL && p->item != v) {
-        ant = p;
-        p = p->prox;
+            ant = p;
+            p = p->prox;
         }
         if (p != NULL) { // verifica se achou elemento 
-        if (ant == NULL) { // retira elemento do início 
-        l->prim = p->prox;
-        }else { // retira elemento do meio da lista 
-        ant->prox = p->prox;
+            if (ant == NULL) { // retira elemento do início 
+                l->prim = p->prox;
+        } else { // retira elemento do meio da lista 
+            ant->prox = p->prox;
         }
         free(p); // libera elemento ( nó )
         }
     }
 
+    // Lista encadeada circular
 
+    // Em uma lista dinâmica encadeada circular, o último elemento tem como sucessor o primeiro elemento da lista, dando a aparência que esse tipo de lista não tem fim.
+
+    // Para percorrer os elementos de uma lista circular, visitamos todos os elementos a partir do ponteiro do elemento inicial até alcançar novamente esse mesmo elemento:
+
+    void percorre(Lista* l){
+        ListaNo* p = l->prim; // faz p apontar para nó inicial ∗/
+
+        if (p != NULL) do { // se não vazia , percorre ∗/
+            printf("%d\n", p->info); // imprime informação do nó ∗/
+            p = p->prox; // avança para o próximo nó ∗/
+        } while (p != l->prim);
+    }
+
+    // Lista dinâmica duplamente encadeada
+
+    // É uma lista definida utilizando alocação dinâmica e que contém três campos de informação:
+
+    // 1 - Campo de dado: Armazena informações inseridas na lista
+    // 2 - Campo próximo: Ponteiro que indica o próximo elemento da lista
+    // 3 - Campo anterior: Ponteiro que indica o elemento anterior da lista
+
+    // O anterior do primeiro elemento deve ser NULL e o próximo do último também.
+    // NULL <-> PRIMEIRO_ELEMENTO <-> ÚLTIMO_ELEMENTO <-> NULL
+
+    // Estruturas da lista duplamente encadeada:
+
+    struct lista{
+        ListaNo* prim;
+        ListaNo* ult;
+    };
+
+    struct listano2 {
+        int info;
+        ListaNo* ant;
+        ListaNo* prox;
+    }
+
+    Lista* cria_lista(void) {
+        Lista* l = (Lista*) malloc(sizeof(Lista));
+
+        l->prim = NULL;
+
+        l->ult = NULL;
+
+        return 1;
+    }
+
+    // Ao inserir no começo, a lista se comporta como uma pilha:
+
+    void insere_inicio (Lista* l, int v) {
+        novo->info = v;
+        novo->prox = l->prim; // O próximo do novo é o antigo primeiro
+        novo->ant = NULL; // Como o novo elemento é sempre o primeiro (pois está adicionando elementos no começo da lista) o anterior é sempre nulo
+
+        if (l->prim != NULL) {
+            l->prim->ant = novo; // O novo é anterior do antigo primeiro
+        } else {
+            l->ult = novo; // Na primeira vez, o novo é o último (e continuará sendo até o fim)
+        }
+        l->prim = novo;
+    }
+
+    void insere_final (Lista* l, int v) {
+        novo->info = v;
+        novo->ant = l->ult; // NULL no começo
+        novo->prox = NULL; // O próximo do último elemento é sempre nulo
+
+        if (l->ult != NULL) {
+            l->ult->prox = novo; // O novo é o próximo do antigo último
+        } else {
+            l->prim = novo; // Na primeira vez (apenas) o novo é o primeiro
+        }
+        l->ult = novo; // O novo é o último
+    }
+
+    ListaNo* busca (Lista* l, int v){
+        for (ListaNo *p= l->prim; p != NULL; p = p->prox){
+
+            if (p->info == v){
+                return p;
+            }
+        }
+            return NULL; // não achou o elemento
+    }
 
     return 0;
 }
