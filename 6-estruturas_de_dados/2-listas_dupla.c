@@ -62,7 +62,7 @@ int vazia(Lista* l) {
     return (l->prim == NULL);
 }
 
-void remove(Lista* l, int valor) {
+void remover(Lista* l, int valor) {
     ListaNo* p = busca(l, valor);
 
     if(p == NULL) {
@@ -95,12 +95,12 @@ int main() {
     printf("Lista com elementos inseridos:\n");
     imprime(l);
 
-    remove(l, 78);
+    remover(l, 78);
 
     printf("Lista após remoção do elemento 78:\n");
     imprime(l);
 
-    remove(l, 45);
+    remover(l, 45);
 
     printf("Lista após remoção do elemento 45:\n");
     imprime(l);
