@@ -11,13 +11,13 @@ typedef struct listano ListaNo;
 struct lista{
     ListaNo* prim;
     ListaNo* ult;
-}
+};
 
 struct listano {
     int elem;
     ListaNo* prox;
     ListaNo* ant;
-}
+};
 
 Lista* cria_lista(void) {
     Lista* l = (Lista*)malloc(sizeof(Lista*));
@@ -29,7 +29,7 @@ Lista* cria_lista(void) {
 }
 
 void cria_no(Lista* l, int valor) {
-    ListaNo* novo = (ListaNo*)malloc(sizeof(ListaNo))
+    ListaNo* novo = (ListaNo*)malloc(sizeof(ListaNo));
 
     novo->elem = valor;
     novo->prox = l->prim;
@@ -59,7 +59,7 @@ int busca(Lista* l, int valor) {
 }
 
 int vazia(Lista* l) {
-    return (l-prim == NULL);
+    return (l->prim == NULL);
 }
 
 void remove(Lista* l, int valor) {
@@ -81,10 +81,29 @@ void remove(Lista* l, int valor) {
     } else {
         p->prox->ant = p->ant;
     }
+    free(p);
 }
 
 int main() {
+    Lista* l = cria_lista();
 
+    cria_no(l, 23);
+    cria_no(l, 45);
+    cria_no(l, 56);
+    cria_no(l, 78);
+
+    printf("Lista com elementos inseridos:\n");
+    imprime(l);
+
+    remove(l, 78);
+
+    printf("Lista após remoção do elemento 78:\n");
+    imprime(l);
+
+    remove(l, 45);
+
+    printf("Lista após remoção do elemento 45:\n");
+    imprime(l);
 
     return 0;
 }
